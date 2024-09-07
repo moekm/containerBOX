@@ -1,0 +1,235 @@
+:root {
+  --font-thin: 400;
+  --font-regular: 500;
+  --font-semiBold: 600;
+  --font-bold: 700;
+  --text-small: 1em;
+  --text-normal: 1.05em;
+  --text-ntol: 1.5em;
+  --text-large: 2em;
+  --text-xlarge: 2.5em;
+  --secondary-background: #fbfbfc;
+  --color-dark-blue: #2e6c92;
+  --color-dark-blue-hover: #1e4d69;
+  --default-shadow: 0px 5px 19px -11px rgba(0, 0, 0, 0.649);
+  --minimal-shadow: 0px 3px 20px -18px rgba(0, 0, 0, 0.649);
+}
+
+@font-face {
+  font-family: "siteFont";
+  src: url("/font/sfont.ttf");
+}
+
+* {
+  font-family: siteFont;
+  font-weight: var(--font-regular);
+  font-size: var(--text-normal);
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 1.5em;
+}
+
+header ul li {
+  display: inline-block;
+  margin: auto 1em;
+}
+
+/** BUTTONS UI STYLES */
+
+button {
+  color: white;
+  font-weight: var(--font-bold);
+  font-style: italic;
+  outline: none;
+  border: none;
+  padding: 0.5em 2em;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 100ms;
+  background: var(--color-dark-blue);
+}
+
+button:hover {
+  background: var(--color-dark-blue-hover);
+}
+
+button:active {
+  background: var(--color-dark-blue);
+}
+
+button#type-hollow {
+  color: var(--color-dark-blue);
+  margin-top: 3em;
+  padding: 0.8em 2em;
+  font-style: normal;
+  font-weight: var(--font-bold);
+  border: var(--color-dark-blue) 3.5px solid;
+  background-color: white;
+}
+
+button#type-hollow:hover {
+  color: white;
+  border-color: transparent;
+  background-color: var(--color-dark-blue);
+}
+
+button#type-hollow:active {
+  color: white;
+  border-color: transparent;
+  background-color: var(--color-dark-blue-hover);
+}
+
+button#type-text {
+  color: black;
+  font-style: normal;
+  font-weight: var(--font-regular);
+  padding: 0;
+  background: none;
+  border: none;
+}
+button#type-text:hover {
+  opacity: 0.5;
+}
+button#type-text:active {
+  opacity: 0.8;
+}
+
+#grid-background {
+  width: 100%;
+  height: auto;
+  background-image: linear-gradient(white, transparent 50%, white 70%),
+    linear-gradient(#0000033a 1px, transparent 1px),
+    linear-gradient(to right, #0000033a 1px, transparent 1px);
+  background-size: 100%, 3em 3em, 3em 3em;
+}
+
+.introduction {
+  text-align: center;
+}
+
+.introduction h1 {
+  margin-top: 3em;
+  font-weight: var(--font-semiBold);
+  font-size: var(--text-large);
+}
+
+.introduction #dashboard-screenshot {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.4em;
+  border-radius: 30px;
+  border: #00000040 3.5px solid;
+  box-shadow: var(--default-shadow);
+  background-color: white;
+}
+
+.introduction #dashboard-screenshot img {
+  max-width: 100%;
+  border-radius: 20px;
+}
+
+.visual-data {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1.5em;
+  padding: 3em 0;
+  margin-top: 8em;
+  background-color: var(--secondary-background);
+}
+
+.visual-data h2 {
+  font-size: var(--text-large);
+  text-align: center;
+}
+
+.visual-data #container-simple-overview {
+  padding: 1em;
+  border: rgba(0, 0, 0, 0.1) 2px solid;
+  border-radius: 10px;
+  box-shadow: var(--minimal-shadow);
+  background-color: white;
+}
+
+.visual-data #controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.visual-data #controls h3 {
+  font-size: var(--text-ntol);
+  margin: 0.5em 0;
+}
+
+.visual-data #controls button {
+  font-size: var(--text-small);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 2.5em;
+  border-radius: 10px;
+  overflow: hidden;
+  background: lightslategray;
+}
+
+.progress-bar * {
+  display: inline-block;
+}
+
+.progress-bar #active-containers {
+  width: 20%;
+  height: 100%;
+  background-color: #c77dff;
+}
+
+.progress-bar #stopped-containers {
+  width: 35%;
+  height: 100%;
+  background-color: #7b2cbf;
+}
+
+.progress-bar #container-images {
+  width: 45%;
+  height: 100%;
+  background-color: #3c096c;
+}
+
+.progress-text {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  margin: 1em auto;
+}
+
+.progress-text span {
+  font-size: var(--text-ntol);
+}
+
+.progress-text p {
+  margin: 0;
+}
+
+.logs h3 {
+  font-size: var(--text-ntol);
+}
+
+.logs p {
+  padding: 0.5em;
+  border: rgba(0, 0, 0, 0.2) 1px solid;
+  border-radius: 10px;
+  box-shadow: var(--minimal-shadow);
+}

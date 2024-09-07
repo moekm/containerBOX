@@ -1,5 +1,7 @@
+import LandingPage from "./components/LandingPage.jsx";
+
 function App() {
-  return 0; // hi, been a while
+  return <LandingPage />;
 }
 
 export default App;
