@@ -233,3 +233,162 @@ button#type-text:active {
   border-radius: 10px;
   box-shadow: var(--minimal-shadow);
 }
+
+/** DASHBOARD COMPONENTS UI */
+
+.dashboard-components .component-container {
+  /** Defaults to 30em and adjusts accordingly */
+  width: 30em;
+  max-width: 100%;
+  min-width: fit-content;
+  border: rgba(0, 0, 0, 0.2) 2px solid;
+  border-radius: 10px;
+  box-shadow: var(--minimal-shadow);
+  background: white;
+}
+
+.component-container #head {
+  --divider-with: 2px;
+  border-bottom: var(--divider-with) rgba(0, 0, 0, 0.2) solid;
+}
+
+.component-container #head div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1em;
+  padding: 0 1em;
+  padding-top: 0.7em;
+}
+
+.component-container #head div p,
+.component-container #head div button {
+  font-weight: var(--font-bold);
+}
+
+.component-container #head p {
+  margin: 0;
+  padding-bottom: 0.5em;
+}
+
+.component-container #head div button {
+  position: relative;
+  padding-bottom: 0.5em;
+}
+
+.component-container #head div button.active::after {
+  content: "";
+  position: absolute;
+  bottom: calc(var(--divider-with) * -1);
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #1b4965;
+}
+
+.component-container #content {
+  padding: 1em;
+}
+
+.component-container #content ul,
+.component-container #content p {
+  padding: 0;
+  margin: 0;
+}
+
+.component-container #row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.component-container#api-data {
+  /** MOVED */
+}
+
+/** DASHBOARD CUSTOM CONTENT UI STYLES */
+
+.dashboard-components #alerts h3 {
+  font-size: var(--text-ntol);
+  margin: 0;
+  margin-bottom: 1em;
+}
+
+.dashboard-components #alerts #learn-more {
+  text-align: end;
+  margin: 0;
+}
+
+.dashboard-components #visual-alerts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1em;
+}
+
+#alerts #graph {
+  width: 300px;
+  aspect-ratio: 2 / 1; /** width (+ 1) > height */
+  border-radius: 50% / 100% 100% 0 0; /** length / side1 side2 side3 side4*/
+  position: relative;
+  overflow: hidden;
+}
+
+/** sorry */
+#alerts #graph::before {
+  --color-critical: #e5383b;
+  --color-warning: #f4b000;
+  --color-other: #949494;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  position: absolute;
+  background: radial-gradient(at 50% 100%, white 55%, transparent 0),
+    conic-gradient(
+      from 0.75turn at 50% 100%,
+      var(--color-critical) calc(var(--percent-critical) / 2),
+      var(--color-warning) calc(var(--percent-critical) / 2),
+      var(--color-warning)
+        calc((var(--percent-warning) + var(--percent-critical)) / 2),
+      var(--color-other)
+        calc((var(--percent-warning) + var(--percent-critical)) / 2),
+      var(--color-other)
+        calc(
+          (
+              var(--percent-other) + var(--percent-warning) +
+                var(--percent-critical)
+            ) / 2
+        ),
+      transparent 0
+    );
+}
+
+#alerts #graph #icon-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+}
+
+#alerts #graph #icon-text p:first-child {
+  font-size: var(--text-ntol);
+  font-weight: var(--font-bold);
+}
+
+#alerts #icon-text p {
+  margin: 0;
+}
+
+#alerts #icon-alerts ul {
+  list-style-type: none;
+}
+
+#alerts #icon-alerts li span {
+  margin-left: 0.5em;
+}
+
+#api-data {
+  background-color: white;
+}
