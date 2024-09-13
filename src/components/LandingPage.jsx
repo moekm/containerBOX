@@ -1,6 +1,8 @@
 import Header from "./landing/Header.jsx";
 import VisualData from "./landing/VisualData.jsx";
+import FAQ from "./landing/FAQ.jsx";
 
+import faqQuestions from "./landing/static/FAQ.js";
 import "../styling/LandingPage.css";
 import placeholderIMG from "../../public/assets/images/placeholder.jpg";
 
@@ -343,6 +345,37 @@ export default function LandingPage() {
         </div> */}
         </div>
       </section>
+
+      <section className="pricing">
+        <h1>Pricing</h1>
+        <div id="container">
+          <div id="price-box">
+            <h2>$0/month</h2>
+            <ul>
+              <li>unlimited builds</li>
+              <li>unlimited bandwidth*</li>
+              <li>unlimited report generation</li>
+              <li>unlimited active & stopped containers</li>
+              <li>auto backups & free integration</li>
+            </ul>
+            <button>Get Started</button>
+          </div>
+        </div>
+        <p>no credit card required</p>
+      </section>
+
+      <section className="FAQ">
+        {faqQuestions.map((question) => {
+          return <FAQ title={question[0]} content={question[1]} />;
+        })}
+      </section>
+
+      <footer>
+        <button id="type-hollow">GET STARTED {">"}</button>
+        <p>
+          Designed and Built by: <a href="https://github.com/moekm/">MOEKM</a>
+        </p>
+      </footer>
     </>
   );
 }

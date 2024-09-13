@@ -9,6 +9,8 @@
   --text-large: 2em;
   --text-xlarge: 2.5em;
   --secondary-background: #fbfbfc;
+  --dark-secondary-background: #ced4da;
+  --color-blue: #cae9ff;
   --color-dark-blue: #2e6c92;
   --color-dark-blue-hover: #1e4d69;
   --default-shadow: 0px 5px 19px -11px rgba(0, 0, 0, 0.649);
@@ -45,6 +47,18 @@ header button {
 header ul li {
   display: inline-block;
   margin: auto 1em;
+}
+
+/** Anchor/Links STYLES */
+
+a {
+  color: var(--color-dark-blue);
+  font-weight: var(--font-bold);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-blue);
 }
 
 /** BUTTONS UI STYLES */
@@ -246,10 +260,16 @@ button#type-text:active {
 .dashboard-components #container {
   display: grid;
   gap: 4em;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 100%;
   justify-items: center;
   margin: 0 4em;
   margin-top: 8em;
+}
+
+@media screen and (min-width: 1500px) {
+  .dashboard-components #container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .dashboard-components::after {
@@ -292,6 +312,7 @@ button#type-text:active {
 
 .component-container #head div {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
   gap: 1em;
@@ -336,12 +357,8 @@ button#type-text:active {
 
 .component-container #row {
   display: flex;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
   justify-content: space-between;
-}
-
-.component-container#api-data {
-  /** MOVED */
 }
 
 /** DASHBOARD CUSTOM CONTENT UI STYLES */
@@ -431,11 +448,12 @@ button#type-text:active {
   background-color: white;
 }
 
-/** Pricing STYLES (will be added in the next version)*/
+/** Pricing STYLES */
 
 .pricing {
   display: grid;
   place-items: center;
+  margin-top: 5em;
 }
 
 .pricing h1 {
@@ -477,12 +495,87 @@ button#type-text:active {
   padding: 0;
 }
 
-.FAQ details {
+/** FAQ UI */
+.FAQ {
+  margin: 5em 15%;
   padding: 1em;
-  background-color: rgb(191, 191, 191);
+  border-radius: 20px;
+  background-color: var(--secondary-background);
 }
 
-.FAQ details:hover {
-  border-radius: 25px;
-  background-color: rgb(88, 88, 88);
+.FAQ #card-container {
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 200ms;
+  overflow: hidden;
+  background-color: var(--secondary-background);
+}
+
+.FAQ #card-container:hover {
+  background-color: var(--dark-secondary-background);
+}
+
+.FAQ #card-container details summary {
+  padding: 1em 1.5em;
+  overflow: hidden;
+}
+
+.FAQ details > summary::-webkit-details-marker,
+.FAQ details > summary::marker {
+  display: none;
+  content: "";
+}
+
+.FAQ #card-container details span::before {
+  content: ">";
+  width: fit-content;
+  display: inline-block;
+  margin-right: 0.5em;
+  font-weight: var(--font-bold);
+  transition: rotate 200ms ease-out;
+}
+
+.FAQ #card-container #details-content {
+  padding: 0 1.5em;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 200ms, padding 200ms;
+}
+
+.FAQ #card-container #details-content p {
+  margin: 0;
+}
+
+.FAQ #card-container details[open] + #details-content {
+  max-height: 100px;
+  padding: 1em 1.5em;
+}
+
+.FAQ #card-container details[open] span::before {
+  rotate: 90deg;
+}
+
+.FAQ #card-container details[open] > summary {
+  background-color: var(--dark-secondary-background);
+  transition: 300ms;
+}
+
+footer {
+  text-align: center;
+  padding-bottom: 2em;
+  background-image: linear-gradient(white 20%, transparent),
+    linear-gradient(#0000033a 1px, transparent 1px),
+    linear-gradient(to right, #0000033a 1px, transparent 1px);
+  background-size: 100%, 3em 3em, 3em 3em;
+}
+
+footer p {
+  width: fit-content;
+  font-weight: var(--font-semiBold);
+  padding: 1em;
+  margin: auto;
+  margin-top: 8em;
+  border: rgba(0, 0, 0, 0.2) 2px solid;
+  border-radius: 20em;
+  background-color: white;
 }
