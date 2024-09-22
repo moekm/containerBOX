@@ -3,11 +3,14 @@
   --font-regular: 500;
   --font-semiBold: 600;
   --font-bold: 700;
+
   --text-small: 1em;
   --text-normal: 1.05em;
   --text-ntol: 1.5em;
   --text-large: 2em;
   --text-xlarge: 2.5em;
+
+  --min-site-width: 355px;
   --secondary-background: #fbfbfc;
   --dark-secondary-background: #ced4da;
   --color-blue: #cae9ff;
@@ -15,6 +18,7 @@
   --color-dark-blue-hover: #1e4d69;
   --default-shadow: 0px 5px 19px -11px rgba(0, 0, 0, 0.649);
   --minimal-shadow: 0px 3px 20px -18px rgba(0, 0, 0, 0.649);
+  --sections-spacer: 8em;
 }
 
 @font-face {
@@ -30,9 +34,11 @@
 
 body {
   margin: 0;
+  min-width: var(--min-site-width); /** No scaling down passed this */
 }
 
 header {
+  width: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -156,23 +162,23 @@ button#type-text:active {
   border-radius: 20px;
 }
 
-.visual-data {
+.containers-data-overview {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
   gap: 1.5em;
   padding: 3em 0;
-  margin-top: 8em;
+  margin-top: var(--sections-spacer);
   background-color: var(--secondary-background);
 }
 
-.visual-data h2 {
+.containers-data-overview h2 {
   font-size: var(--text-large);
   text-align: center;
 }
 
-.visual-data #container-simple-overview {
+.containers-data-overview #data-overview {
   padding: 1em;
   border: rgba(0, 0, 0, 0.1) 2px solid;
   border-radius: 10px;
@@ -180,18 +186,18 @@ button#type-text:active {
   background-color: white;
 }
 
-.visual-data #controls {
+.containers-data-overview #controls {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.visual-data #controls h3 {
+.containers-data-overview #controls h3 {
   font-size: var(--text-ntol);
   margin: 0.5em 0;
 }
 
-.visual-data #controls button {
+.containers-data-overview #controls button {
   font-size: var(--text-small);
 }
 
@@ -205,6 +211,8 @@ button#type-text:active {
 
 .progress-bar * {
   display: inline-block;
+  transition: 1s;
+  animation-timing-function: ease-in-out;
 }
 
 .progress-bar #active-containers {
@@ -233,28 +241,97 @@ button#type-text:active {
   margin: 1em auto;
 }
 
+@keyframes valueUpdated {
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .progress-text span {
   font-size: var(--text-ntol);
+  transition: 300ms;
+  animation: valueUpdated 1s ease-in-out;
 }
 
 .progress-text p {
   margin: 0;
 }
 
+.logs #logs-overview {
+  overflow-y: scroll;
+  height: 8.1em;
+  padding-right: 0.3em;
+}
+
+.logs #logs-overview::-webkit-scrollbar {
+  width: 4px;
+}
+
+.logs #logs-overview::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.logs #logs-overview::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+}
+
 .logs h3 {
   font-size: var(--text-ntol);
 }
 
-.logs p {
+.logs #logs-overview p {
   padding: 0.5em;
   border: rgba(0, 0, 0, 0.2) 1px solid;
   border-radius: 10px;
   box-shadow: var(--minimal-shadow);
 }
 
+@keyframes logUpdated {
+  0% {
+    height: 0;
+    padding: 0;
+    margin: 0;
+    transform: translateY(-30px);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes logRemoved {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 0;
+  }
+}
+
+.logs #logs-overview p {
+  animation: logUpdated 1s;
+}
+
+.logs #logs-overview p#removed {
+  animation: logRemoved 300ms;
+  /* transition: height 1s;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  border: none; */
+  animation-fill-mode: forwards;
+}
+
 /** DASHBOARD COMPONENTS UI */
 .dashboard-components {
   position: relative;
+  margin-top: var(--sections-spacer);
 }
 
 .dashboard-components #container {
@@ -263,7 +340,6 @@ button#type-text:active {
   grid-template-columns: 100%;
   justify-items: center;
   margin: 0 4em;
-  margin-top: 8em;
 }
 
 @media screen and (min-width: 1500px) {
@@ -453,7 +529,7 @@ button#type-text:active {
 .pricing {
   display: grid;
   place-items: center;
-  margin-top: 5em;
+  margin-top: var(--sections-spacer);
 }
 
 .pricing h1 {
@@ -578,4 +654,26 @@ footer p {
   border: rgba(0, 0, 0, 0.2) 2px solid;
   border-radius: 20em;
   background-color: white;
+}
+
+/** MOBILE */
+@media screen and (max-width: 675px) {
+  .introduction,
+  .containers-data-overview,
+  .pricing {
+    margin: auto 1em;
+  }
+  .dashboard-components #container {
+    margin: 8em 1em;
+  }
+  .pricing #container {
+    width: auto;
+  }
+  .FAQ {
+    margin: 5em 1em;
+  }
+  footer p {
+    margin: auto 1em;
+    margin-top: 4em;
+  }
 }

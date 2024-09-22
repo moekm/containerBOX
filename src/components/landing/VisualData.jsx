@@ -33,8 +33,12 @@ export default function VisualData({
           <div>
             {strNav && <p>{title}</p>}
             {btnNav &&
-              title.map((btn) => {
-                return <button id="type-text">{btn}</button>;
+              title.map((btn, i) => {
+                return (
+                  <button key={i} id="type-text">
+                    {btn}
+                  </button>
+                );
               })}
           </div>
         </div>
@@ -47,8 +51,8 @@ export default function VisualData({
             {contentHead.length > 0 && (
               <div id="content-head">
                 <div id="row">
-                  {contentHead.map((value) => (
-                    <p>{value}</p>
+                  {contentHead.map((value, i) => (
+                    <p key={i}>{value}</p>
                   ))}
                 </div>
                 <hr />
@@ -56,10 +60,10 @@ export default function VisualData({
             )}
 
             <ul>
-              {content.map((item) => (
-                <li id="row">
-                  {item.map((value) => (
-                    <p>{value}</p>
+              {content.map((item, i) => (
+                <li key={i} id="row">
+                  {item.map((value, i) => (
+                    <p key={i}>{value}</p>
                   ))}
                 </li>
               ))}
