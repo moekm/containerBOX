@@ -19,13 +19,19 @@ export default function Header() {
       <nav>
         <ul>
           <li>
-            <button id="type-text">Pricing</button>
+            <a href="#pricing">
+              <button id="type-text">Pricing</button>
+            </a>
           </li>
           <li>
-            <button id="type-text">FAQ</button>
+            <a href="#FAQ">
+              <button id="type-text">FAQ</button>
+            </a>
           </li>
           <li>
-            <button id="type-text">Contact</button>
+            <a href="#contact">
+              <button id="type-text">Contact</button>
+            </a>
           </li>
         </ul>
       </nav>
