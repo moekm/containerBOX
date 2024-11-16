@@ -1,0 +1,15 @@
+.error {
+  text-align: center;
+}
+
+#error-code {
+  margin-bottom: 0;
+  font-size: var(--text-large);
+  font-weight: var(--font-bold);
+}
+
+#error-details {
+  margin: 0;
+  margin-bottom: 0.5em;
+  padding: 1em;
+}

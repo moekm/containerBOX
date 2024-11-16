@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Header from "./landing/Header.jsx";
 import ContainerDataOverview from "./landing/ContainerOverview.jsx";
 import DashboardComponents from "./landing/DashbaordComponents.jsx";
@@ -13,7 +14,7 @@ export default function LandingPage() {
         <Header />
 
         <section className="introduction">
-          <h1>A single dashboard to manage all of your containers</h1>
+          <h1>A Single Dashboard to Manage All Your Containers</h1>
 
           <div id="dashboard-screenshot">
             <img
@@ -22,7 +23,9 @@ export default function LandingPage() {
             />
           </div>
 
-          <button id="type-hollow">GO TO DASHBOARD {">"}</button>
+          <Link to="/dashboard">
+            <button id="type-hollow">GO TO DASHBOARD {">"}</button>
+          </Link>
         </section>
       </div>
 
@@ -47,7 +50,9 @@ export default function LandingPage() {
               <li>unlimited active & stopped containers</li>
               <li>auto backups & free integration</li>
             </ul>
-            <button>Get Started</button>
+            <Link to="/dashboard">
+              <button>Get Started</button>
+            </Link>
           </div>
         </div>
         <p>no credit card required</p>
@@ -62,7 +67,9 @@ export default function LandingPage() {
       </section>
 
       <footer>
-        <button id="type-hollow">GET STARTED {">"}</button>
+        <Link to="/dashboard">
+          <button id="type-hollow">GET STARTED {">"}</button>
+        </Link>
         <p>
           Designed and Built by: <a href="https://github.com/moekm/">MOEKM</a>
         </p>

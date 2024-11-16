@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Header() {
   return (
     <header>
@@ -36,7 +38,9 @@ export default function Header() {
         </ul>
       </nav>
 
-      <button>Try it {">"}</button>
+      <Link to="/dashboard">
+        <button>Try it {">"}</button>
+      </Link>
     </header>
   );
 }
