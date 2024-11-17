@@ -1,0 +1,162 @@
+:root {
+  --font-thin: 400;
+  --font-regular: 500;
+  --font-semiBold: 600;
+  --font-bold: 700;
+
+  --text-xsmall: 0.8em;
+  --text-small: 1em;
+  --text-normal: 1.05em;
+  --text-ntol: 1.5em;
+  --text-large: 2em;
+  --text-xlarge: 2.5em;
+
+  --min-site-width: 355px;
+  --background: #f5f7f9;
+  --secondary-background: #fbfbfc;
+  --dark-secondary-background: #ced4da;
+  --color-grey: #666e79;
+  --color-blue: #cae9ff;
+  --color-dark-blue: #2e6c92;
+  --color-dark-blue-hover: #1e4d69;
+  --color-red: #e63946;
+  --default-shadow: 0px 5px 19px -11px rgba(0, 0, 0, 0.649);
+  --minimal-shadow: 0px 3px 20px -18px rgba(0, 0, 0, 0.649);
+  --sections-spacer: 8em;
+}
+
+@font-face {
+  font-family: "siteFont";
+  src: url("/fonts/sfont.ttf");
+}
+
+* {
+  font-family: siteFont;
+  font-weight: var(--font-regular);
+  font-size: var(--text-normal);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: var(--min-site-width); /** No scaling down passed this */
+}
+
+header {
+  width: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 1.5em;
+}
+
+header ul li {
+  display: inline-block;
+  margin: auto 1em;
+}
+
+a {
+  color: var(--color-dark-blue);
+  font-weight: var(--font-bold);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-blue);
+}
+
+button {
+  color: white;
+  font-weight: var(--font-bold);
+  /* font-style: italic; */
+  outline: none;
+  border: none;
+  padding: 0.5em 2em;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 100ms;
+  background: var(--color-dark-blue);
+}
+
+button:hover {
+  background: var(--color-dark-blue-hover);
+}
+
+button:active {
+  background: var(--color-dark-blue);
+}
+
+button#italic {
+  font-style: italic;
+}
+
+button#type-hollow {
+  color: var(--color-dark-blue);
+  margin-top: 3em;
+  padding: 0.8em 2em;
+  font-style: normal;
+  font-weight: var(--font-bold);
+  border: var(--color-dark-blue) 3.5px solid;
+  background-color: white;
+}
+
+button#type-hollow:hover {
+  color: white;
+  border-color: transparent;
+  background-color: var(--color-dark-blue);
+}
+
+button#type-hollow:active {
+  color: white;
+  border-color: transparent;
+  background-color: var(--color-dark-blue-hover);
+}
+
+button#type-text {
+  color: black;
+  font-style: normal;
+  font-weight: var(--font-regular);
+  padding: 0;
+  background: none;
+  border: none;
+}
+button#type-text:hover {
+  opacity: 0.5;
+}
+button#type-text:active {
+  opacity: 0.8;
+}
+
+/** General Error UI */
+
+#error {
+  width: 100%;
+  padding: 1em;
+  color: white;
+  text-align: center;
+  box-sizing: border-box;
+  background-color: var(--color-red);
+}
+
+#error h2 {
+  margin: 0;
+  font-weight: var(--font-semiBold);
+  font-size: var(--text-ntol);
+}
+
+#error p {
+  margin: 0;
+  text-align: center;
+}
+
+/** General Animations */
+
+@keyframes valueUpdated {
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}

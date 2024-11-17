@@ -1,0 +1,523 @@
+#grid-background {
+  width: 100%;
+  height: auto;
+  background-image: linear-gradient(white, transparent 50%, white 70%),
+    linear-gradient(#0000033a 1px, transparent 1px),
+    linear-gradient(to right, #0000033a 1px, transparent 1px);
+  background-size: 100%, 3em 3em, 3em 3em;
+}
+
+.introduction {
+  text-align: center;
+  margin: auto 1em;
+}
+
+.introduction h1 {
+  margin-top: 3em;
+  font-weight: var(--font-semiBold);
+  font-size: var(--text-xlarge);
+}
+
+.introduction #dashboard-screenshot {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.4em;
+  border-radius: 30px;
+  border: #00000040 3.5px solid;
+  box-shadow: var(--default-shadow);
+  background-color: white;
+}
+
+.introduction #dashboard-screenshot img {
+  max-width: 100%;
+  border-radius: 20px;
+}
+
+.containers-data-overview {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1.5em;
+  padding: 3em 0;
+  margin-top: var(--sections-spacer);
+  background-color: var(--secondary-background);
+}
+
+.containers-data-overview h2 {
+  font-size: var(--text-large);
+  text-align: center;
+}
+
+.containers-data-overview #data-overview {
+  padding: 1em;
+  border: rgba(0, 0, 0, 0.1) 2px solid;
+  border-radius: 10px;
+  box-shadow: var(--minimal-shadow);
+  background-color: white;
+}
+
+.containers-data-overview #controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.containers-data-overview #controls h3 {
+  font-size: var(--text-ntol);
+  margin: 0.5em 0;
+}
+
+.containers-data-overview #controls button {
+  font-size: var(--text-small);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 2.5em;
+  border-radius: 10px;
+  overflow: hidden;
+  background: lightslategray;
+}
+
+.progress-bar * {
+  display: inline-block;
+  transition: 1s;
+  animation-timing-function: ease-in-out;
+}
+
+.progress-bar #active-containers {
+  width: 20%;
+  height: 100%;
+  background-color: #c77dff;
+}
+
+.progress-bar #stopped-containers {
+  width: 35%;
+  height: 100%;
+  background-color: #7b2cbf;
+}
+
+.progress-bar #container-images {
+  width: 45%;
+  height: 100%;
+  background-color: #3c096c;
+}
+
+.progress-text {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  margin: 1em auto;
+}
+
+/** valueUpdated animation is found in main.css */
+
+.progress-text span {
+  font-size: var(--text-ntol);
+  transition: 300ms;
+  animation: valueUpdated 1s ease-in-out;
+}
+
+.progress-text p {
+  margin: 0;
+}
+
+.logs #logs-overview {
+  overflow-y: scroll;
+  height: 8.1em;
+  padding-right: 0.3em;
+}
+
+.logs #logs-overview::-webkit-scrollbar {
+  width: 4px;
+}
+
+.logs #logs-overview::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.logs #logs-overview::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+}
+
+.logs h3 {
+  font-size: var(--text-ntol);
+}
+
+.logs #logs-overview p {
+  padding: 0.5em;
+  height: 1.2em;
+  border: rgba(0, 0, 0, 0.2) 1px solid;
+  border-radius: 10px;
+  box-shadow: var(--minimal-shadow);
+}
+
+.logs #logs-overview p {
+  animation: logUpdated 1s;
+}
+
+@keyframes logUpdated {
+  0% {
+    height: 0;
+    padding: 0;
+    margin: 0;
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+/** DASHBOARD COMPONENTS UI */
+
+.dashboard-components {
+  position: relative;
+  margin-top: var(--sections-spacer);
+}
+
+.dashboard-components #container {
+  display: grid;
+  gap: 4em;
+  grid-template-columns: 100%;
+  justify-items: center;
+  margin: 0 4em;
+}
+
+@media screen and (min-width: 1500px) {
+  .dashboard-components #container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.dashboard-components::after {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  content: "";
+  width: 100%;
+  height: 20em;
+  background: linear-gradient(to top, white, transparent);
+}
+
+.dashboard-components #alerts {
+  margin-top: -1.5em;
+}
+
+.dashboard-components #account-overview {
+  margin-top: -1em;
+}
+
+.dashboard-components #core-system {
+  margin-top: 1em;
+}
+
+.dashboard-components .component-container {
+  /** defaults to 30em and adjusts accordingly */
+  width: 30em;
+  max-width: 100%;
+  border: rgba(0, 0, 0, 0.2) 2px solid;
+  border-radius: 10px;
+  box-shadow: var(--minimal-shadow);
+  background: white;
+}
+
+.component-container #head {
+  --divider-with: 2px;
+  border-bottom: var(--divider-with) rgba(0, 0, 0, 0.2) solid;
+}
+
+.component-container #head div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1em;
+  padding: 0 1em;
+  padding-top: 0.7em;
+}
+
+.component-container #head div p,
+.component-container #head div button {
+  font-weight: var(--font-bold);
+}
+
+.component-container #head p {
+  margin: 0;
+  padding-bottom: 0.5em;
+}
+
+.component-container #head div button {
+  position: relative;
+  padding-bottom: 0.5em;
+}
+
+.component-container #head div button.active::after {
+  content: "";
+  position: absolute;
+  bottom: calc(var(--divider-with) * -1);
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #1b4965;
+}
+
+.component-container #content {
+  padding: 1em;
+}
+
+.component-container #content ul,
+.component-container #content p {
+  padding: 0;
+  margin: 0;
+}
+
+.component-container #row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.dashboard-components #alerts h3 {
+  font-size: var(--text-ntol);
+  margin: 0;
+  margin-bottom: 1em;
+}
+
+.dashboard-components #alerts #learn-more {
+  text-align: end;
+  margin: 0;
+}
+
+.dashboard-components #visual-alerts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1em;
+}
+
+#alerts #graph {
+  width: 300px;
+  aspect-ratio: 2 / 1; /** width (+ 1) > height */
+  border-radius: 50% / 100% 100% 0 0; /** length / side1 side2 side3 side4*/
+  position: relative;
+  overflow: hidden;
+}
+
+/** sorry */
+#alerts #graph::before {
+  --color-critical: #e5383b;
+  --color-warning: #f4b000;
+  --color-other: #949494;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  position: absolute;
+  background: radial-gradient(at 50% 100%, white 55%, transparent 0),
+    conic-gradient(
+      from 0.75turn at 50% 100%,
+      var(--color-critical) calc(var(--percent-critical) / 2),
+      var(--color-warning) calc(var(--percent-critical) / 2),
+      var(--color-warning)
+        calc((var(--percent-warning) + var(--percent-critical)) / 2),
+      var(--color-other)
+        calc((var(--percent-warning) + var(--percent-critical)) / 2),
+      var(--color-other)
+        calc(
+          (
+              var(--percent-other) + var(--percent-warning) +
+                var(--percent-critical)
+            ) / 2
+        ),
+      transparent 0
+    );
+}
+
+#alerts #graph #icon-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+}
+
+#alerts #graph #icon-text p:first-child {
+  font-size: var(--text-ntol);
+  font-weight: var(--font-bold);
+}
+
+#alerts #icon-text p {
+  margin: 0;
+}
+
+#alerts #icon-alerts ul {
+  list-style-type: none;
+}
+
+#alerts #icon-alerts li span {
+  margin-left: 0.5em;
+}
+
+#api-data {
+  background-color: white;
+}
+
+/** Pricing STYLES */
+
+.pricing {
+  display: grid;
+  place-items: center;
+  margin-top: var(--sections-spacer);
+}
+
+.pricing h1 {
+  font-size: var(--text-xlarge);
+}
+
+.pricing #container {
+  width: 50%;
+  text-align: center;
+  padding: 1.5em;
+  border-radius: 20px;
+  border: var(--color-dark-blue) 3px solid;
+  position: relative;
+  background: white;
+}
+
+.pricing #container::before {
+  content: "free forever";
+  width: fit-content;
+  color: white;
+  position: absolute;
+  top: -1em;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 100px;
+  padding: 0.3em 0.5em;
+  background-color: var(--color-dark-blue);
+}
+
+.pricing #container h2 {
+  font-size: var(--text-large);
+}
+
+.pricing #container ul {
+  list-style: none;
+  margin: 1em 0em;
+  padding: 0;
+}
+
+/** FAQ UI */
+
+.FAQ {
+  margin: 5em 15%;
+  padding: 1em;
+  border-radius: 20px;
+  background-color: var(--secondary-background);
+}
+
+.FAQ #card-container {
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 200ms;
+  overflow: hidden;
+  background-color: var(--secondary-background);
+}
+
+.FAQ #card-container:hover {
+  background-color: var(--dark-secondary-background);
+}
+
+.FAQ #card-container details summary {
+  padding: 1em 1.5em;
+  overflow: hidden;
+}
+
+.FAQ details > summary::-webkit-details-marker,
+.FAQ details > summary::marker {
+  display: none;
+  content: "";
+}
+
+.FAQ #card-container details span::before {
+  content: ">";
+  width: fit-content;
+  display: inline-block;
+  margin-right: 0.5em;
+  font-weight: var(--font-bold);
+  transition: rotate 200ms ease-out;
+}
+
+.FAQ #card-container #details-content {
+  padding: 0 1.5em;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 200ms, padding 200ms;
+}
+
+.FAQ #card-container #details-content p {
+  margin: 0;
+}
+
+.FAQ #card-container details[open] + #details-content {
+  max-height: 100px;
+  padding: 1em 1.5em;
+}
+
+.FAQ #card-container details[open] span::before {
+  rotate: 90deg;
+}
+
+.FAQ #card-container details[open] > summary {
+  background-color: var(--dark-secondary-background);
+  transition: 300ms;
+}
+
+footer {
+  text-align: center;
+  padding-bottom: 2em;
+  background-image: linear-gradient(white 20%, transparent),
+    linear-gradient(#0000033a 1px, transparent 1px),
+    linear-gradient(to right, #0000033a 1px, transparent 1px);
+  background-size: 100%, 3em 3em, 3em 3em;
+}
+
+footer p {
+  width: fit-content;
+  font-weight: var(--font-semiBold);
+  padding: 1em;
+  margin: auto;
+  margin-top: 8em;
+  border: rgba(0, 0, 0, 0.2) 2px solid;
+  border-radius: 20em;
+  background-color: white;
+}
+
+/** MOBILE */
+@media screen and (max-width: 675px) {
+  .containers-data-overview,
+  .pricing {
+    margin: auto 1em;
+  }
+  .dashboard-components #container {
+    margin: 8em 1em;
+  }
+  .pricing #container {
+    width: auto;
+  }
+  .FAQ {
+    margin: 5em 1em;
+  }
+  footer p {
+    margin: auto 1em;
+    margin-top: 4em;
+  }
+}
