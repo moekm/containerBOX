@@ -26,7 +26,9 @@ export default function Header() {
         </ul>
       </nav>
 
-      <Button to="/dashboard">Try it {">"}</Button>
+      <Button to="/dashboard" replace>
+        Try it {">"}
+      </Button>
     </header>
   );
 }

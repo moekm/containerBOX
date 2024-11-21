@@ -4,6 +4,7 @@ import ErrorPage from "../pages/ErrorPage.jsx";
 import DashboardLayout from "../pages/dashboard/DashboardLayout.jsx";
 
 import Error from "../components/UI/Error.jsx";
+import Login from "../pages/Login.jsx";
 
 const router = createBrowserRouter([
   {
@@ -15,12 +16,16 @@ const router = createBrowserRouter([
         element: <LandingPage />,
       },
       {
+        path: "login",
+        element: <Login />,
+      },
+      {
         path: "dashboard",
         element: <DashboardLayout />,
         children: [
           {
             index: true,
-            element: <p>Soon.</p>,
+            element: <p id="general-message">Soon.</p>,
           },
           {
             path: "*",

@@ -1,16 +1,35 @@
-import { Outlet, Link } from "react-router-dom";
+import { useEffect, useContext } from "react";
+import { Outlet, Link, useNavigate } from "react-router-dom";
+
+import UserCTX from "../../store/user";
 
 import "../../styles/dashboard-layout.css";
 
 export default function DashboardLayout() {
+  const redirect = useNavigate();
+  const userState = useContext(UserCTX);
+
+  // not the best solution but it works for now
+  const isLoggedIn = userState.username.length > 0;
+  useEffect(() => {
+    if (!isLoggedIn) {
+      return redirect("/login", { replace: true });
+    }
+  }, [userState, isLoggedIn]);
+
+  if (!isLoggedIn) return null;
+
+  const username = userState.username;
+  const email = userState.email;
+
   return (
     <main className="dashboard">
       <section className="dashboard-nav">
         <div id="user-info">
-          <img src="#" />
+          <img src="/assets/images/no_profile_image.png" />
           <div id="user_and_email">
-            <p>USERNAME</p>
-            <p>contact@moekm.com</p>
+            <p>{username}</p>
+            <p>{email || "no@email.com"}</p>
           </div>
         </div>
         <div id="menu-nav">
@@ -56,3 +75,8 @@ export default function DashboardLayout() {
     </main>
   );
 }
+
+// export function loader() {
+
+//     return redirect("/login");
+// }

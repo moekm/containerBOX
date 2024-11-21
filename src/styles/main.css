@@ -150,6 +150,11 @@ button#type-text:active {
   text-align: center;
 }
 
+#general-message {
+  text-align: center;
+  margin-top: 3em;
+}
+
 /** General Animations */
 
 @keyframes valueUpdated {

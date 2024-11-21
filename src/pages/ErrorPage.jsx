@@ -4,7 +4,9 @@ import Button from "../components/UI/Button";
 import "../styles/error-pages.css";
 
 export default function ErrorPage() {
-  const { status, statusText } = useRouteError();
+  const { status, statusText, ...error } = useRouteError();
+
+  console.error(error);
 
   return (
     <section className="error">

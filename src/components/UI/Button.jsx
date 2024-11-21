@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-export default function Button({ children, to, href, ...props }) {
+export default function Button({ children, to, replace, href, ...props }) {
   if (to) {
     return (
-      <Link to={to}>
+      <Link to={to} replace={replace}>
         <button {...props}>{children}</button>
       </Link>
     );
